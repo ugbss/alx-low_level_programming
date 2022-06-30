@@ -2,9 +2,9 @@
 #include <unistd.h>
 
 /**
- * main - prints exactly a phrase 
- * Dora Korpar, 
- * followed by a new line 
+ * main - prints exactly a phrase
+ * Dora Korpar
+ * followed by a new line
  * Return: 1 is successful
  */
 int main(void)
