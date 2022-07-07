@@ -3,7 +3,6 @@
 /**
 * main - causes an infinite loop
 * Return: 0
-* \\o/\n : to stop infinite loop
 */
 
 int main(void)
