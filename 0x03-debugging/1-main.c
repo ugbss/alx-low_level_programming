@@ -17,7 +17,7 @@ int main(void)
 	/**
 	 * while (i < 10) - infinite loop as a result of this
 	 * {
-	 * putchar(i);
+	 *	 putchar(i);
 	 * }
 	 */
 
