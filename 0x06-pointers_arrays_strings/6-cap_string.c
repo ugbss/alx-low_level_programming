@@ -1,24 +1,35 @@
 #include "main.h"
+#include <string.h>
+
 /**
- * cap_string - capitalizes word string
- * @s: string to
- * Return: the resulting string
+ * cap_string- change lower case to upper
+ * @str: string to convert
+ * Return: upper string
  */
-char *cap_string(char *s)
+char *cap_string(char *str)
 {
 int i, j;
-char spe[13] = {"' '\t,;.' '\n!' '?\"(){}-"};
-for (i = 0; s[i] != '\0'; i++)
+char deli[25] = {"' '\t,;.' '\n!' '?\"(){}-"};
+for (i = 0; str[i] != '\0'; i++)
 {
-if (i == 0 && s[i] >= 'a' && s[i] <= 'z')
-s[i] -= 32;
-for (j = 0; j < 13; j++)
+for (j = 0; deli[j] != '\0'; j++)
 {
-if (s[i] == spe[j])
+if (i == 0)
 {
-if (s[i + 1] >= 'a' && s[i + 1] <= 'z')
+if (str[i] >= 'a' && str[i] <= 'z')
+str[i] = str[i] - 32;
+continue;
+}
+if (str[i] == deli[j])
 {
-s[i + 1] -= 32;
-}}}}
-return (s);
+++i;
+if (str[i] >= 'a' && str[i] <= 'z')
+{
+str[i] = str[i] - 32;
+continue;
+}
+}
+}
+}
+return (str);
 }
