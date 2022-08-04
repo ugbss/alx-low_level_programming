@@ -1,26 +1,18 @@
-lude "variadic_functions.h"
+#include "variadic_functions.h"
 
 #include <stdio.h>
-
-#include <stdarg.h>
 
 
 
 /**
  *
- *  *print_strings - print strings
+ *  * print_strings - prints strings, followed by a new line.
  *
- *   *@separator: string to print between strings
+ *   * @separator: the string to be printed between the strings
  *
- *    *@n: number of strings passed to function
+ *    * @n: count of parameters
  *
- *     *@...: variable parameters
- *
- *      *
- *
- *       * Return: void
- *
- *        */
+ *     */
 
 void print_strings(const char *separator, const unsigned int n, ...)
 
@@ -28,66 +20,38 @@ void print_strings(const char *separator, const unsigned int n, ...)
 
 		unsigned int i;
 
-			va_list ptr;
+			va_list list;
+
+				char *hold;
 
 
 
-				/*Initialize arg to the list pointer*/
+					va_start(list, n);
 
-				va_start(ptr, n);
+						for (i = 0; i < n; i++)
 
+								{
 
+											hold = va_arg(list, char*);
 
-					for (i = 0; i < n; i++)
+													if (hold == NULL)
 
-							{
+																	printf("(nil)");
 
-										if (separator != NULL)
+															else
 
-													{
+																			printf("%s", hold);
 
-																	
+																	if (i != (n - 1) && separator != NULL)
 
-																	printf("%s", va_arg(ptr, char *));
+																					printf("%s", separator);
 
-																					
+																		}
 
-																				if (i < n - 1)
-
-																								{
-
-																													printf("%s", separator);
-
-																																}
-
-																							
-
-																							va_end(ptr);
-
-																									}
-
-												else
-
-															{
-
-																			printf("%s", va_arg(ptr, char *));
-
-																						if (i < n - 1)
-
-																										{
-
-																															printf("%s", separator);
-
-																																		}
-
-																									va_end(ptr);
-
-																											}
-
-													}
-
-							putchar('\n');
+							printf("\n");
 
 
+
+								va_end(list);
 
 }
