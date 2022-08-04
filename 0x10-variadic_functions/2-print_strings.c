@@ -1,28 +1,93 @@
-#include "variadic_functions.h"
+lude "variadic_functions.h"
+
+#include <stdio.h>
+
+#include <stdarg.h>
+
+
 
 /**
- * print_strings - prints strings
- * @seperator: seperator between strings
- * @n: number of arguments
- */
-void print_strings(const char *seperator, const unsigned int n, ...)
+ *
+ *  *print_strings - print strings
+ *
+ *   *@separator: string to print between strings
+ *
+ *    *@n: number of strings passed to function
+ *
+ *     *@...: variable parameters
+ *
+ *      *
+ *
+ *       * Return: void
+ *
+ *        */
+
+void print_strings(const char *separator, const unsigned int n, ...)
+
 {
-unsigned int i;
-char *str;
-va_list list;
-va_start(list, n);
-for (i = 0; i < n; i++)
-{
-str = va_arg(list, char *)
-if (!str)
-str = "(nil)";
-if (!seperator)
-printf("%s", str);
-else if (seperator && i == 0)
-printf("%s", str);
-else
-printf("%s%s", seperator, str);
-}
-printf("\n");
-va_end(list);
+
+		unsigned int i;
+
+			va_list ptr;
+
+
+
+				/*Initialize arg to the list pointer*/
+
+				va_start(ptr, n);
+
+
+
+					for (i = 0; i < n; i++)
+
+							{
+
+										if (separator != NULL)
+
+													{
+
+																	
+
+																	printf("%s", va_arg(ptr, char *));
+
+																					
+
+																				if (i < n - 1)
+
+																								{
+
+																													printf("%s", separator);
+
+																																}
+
+																							
+
+																							va_end(ptr);
+
+																									}
+
+												else
+
+															{
+
+																			printf("%s", va_arg(ptr, char *));
+
+																						if (i < n - 1)
+
+																										{
+
+																															printf("%s", separator);
+
+																																		}
+
+																									va_end(ptr);
+
+																											}
+
+													}
+
+							putchar('\n');
+
+
+
 }
